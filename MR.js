@@ -14,10 +14,24 @@ const introText2 = document.querySelector(".introText2");
 const logo = document.querySelector(".logoo");
 const aboutText = document.querySelector(".aboutText");
 const sections = document.querySelectorAll("section");
+const introVideo = document.querySelector(".introVideo");
+const contact = document.querySelector(".contact");
+const contactPage = document.querySelector(".contactPage");
+const contactImg=document.querySelector(".contactImg");
+const githubContact = document.querySelector(".githubContact");
+const LinkinContact = document.querySelector(".LinkinContact");
+const gmailContact = document.querySelector(".gmailContact");
+const twitterContact = document.querySelector(".twitterContact");
+const facebookContact = document.querySelector(".facebookContact");
+const githubArrow = document.querySelector(".githubArrow");
+const LinkinArrow = document.querySelector(".LinkinArrow");
+const gmailArrow = document.querySelector(".gmailArrow");
+const twitterArrow = document.querySelector(".twitterArrow");
+const facebookArrow = document.querySelector(".facebookArrow");
 //scrollmagic
 const controller = new ScrollMagic.Controller();
-const controller2 = new ScrollMagic.Controller();
 // gsap timeline
+
 //intro gsap
 const introTextAnim = gsap.timeline();
 introTextAnim.fromTo(burger, 2, { y: "-300%" }, { y: "0%" });
@@ -42,6 +56,20 @@ aboutPageGsp.to(imgpart2, 1.1, { opacity: "0.8" });
 aboutPageGsp.to(imgpart3, 1.1, { opacity: "0.8" });
 aboutPageGsp.to(aboutText, 4, { clipPath: "circle(100%  at 20% 20%)" });
 
+// COntact page Gsap
+const contactPageGsap = gsap.timeline();
+contactPageGsap.fromTo(contact, 5, { opacity: 0 }, { opacity: 0.9 });
+contactPageGsap.fromTo(contact, 6, { scale: "0" }, { scale: "1" }, "-=7");
+contactPageGsap.fromTo(githubContact, 2.5, { x: "-400%", y: "-400%" }, { x: "0%", y: "0%" }, "-=2.5");
+contactPageGsap.fromTo(gmailContact, 2.5, { x: "-400%", y: "400%" }, { x: "0%", y: "0%" }, "-=2.5");
+contactPageGsap.fromTo(LinkinContact, 2.5, { x: "400%", y: "-400%" }, { x: "0%", y: "0%" }, "-=2.5");
+contactPageGsap.fromTo(twitterContact, 2.5, { x: "-400%", y: "400%" }, { x: "0%", y: "0%" }, "-=2.5");
+contactPageGsap.fromTo(facebookContact, 2.5, { x: "400%" }, { x: "0%" }, "-=2.5");
+
+//second page Nav position
+const navAnim = gsap.timeline();
+navAnim.fromTo(burger, 2, { y: "-300%" }, { y: "0%" });
+navAnim.fromTo(logo, 2, { y: "-300%" }, { y: "0%" }, "-=2");
 //scenes
 let introVideoScene = new ScrollMagic.Scene({
   duration: "9200",
@@ -95,6 +123,20 @@ let aboutOffScene = new ScrollMagic.Scene({
   .setTween(aboutPageGsp)
   .addTo(controller)
 
+let contactScene = new ScrollMagic.Scene({
+  triggerElement: contactPage,
+  triggerHook: 0
+})
+  /*
+  .addIndicators({
+    colorStart:"black",
+    colorTrigger:"white"
+  })
+  */
+  .setTween(contactPageGsap)
+  .addTo(controller)
+
+
 
 //Functions
 function navTogle(e) {
@@ -116,6 +158,41 @@ function navTogle(e) {
 
 
 }
+const navtogleScene = gsap.timeline();
+function contactOn(e) {
+    if(window.innerWidth>1025){
+
+    
+  navtogleScene.to(githubArrow, 1, { width: "0.1%", height: "15%" });
+  navtogleScene.to(githubContact, 1, { x: "-70%", y: "-70%" }, "-=1");
+  navtogleScene.to(LinkinArrow, 1, { width: "0.1%", height: "15%" },"-=1");
+  navtogleScene.to(LinkinContact, 1, { x: "70%", y: "-70%" }, "-=1");
+  navtogleScene.to(facebookArrow, 1, { width: "0.1%", height: "15%" },"-=1");
+  navtogleScene.to(facebookContact, 1, { x: "88%"}, "-=1");
+  navtogleScene.to(twitterArrow, 1, { width: "0.1%", height: "15%" },"-=1");
+  navtogleScene.to(twitterContact, 1, { x: "70%", y: "70%" }, "-=1");
+  navtogleScene.to(gmailArrow, 1, { width: "0.1%", height: "15%" },"-=1");
+  navtogleScene.to(gmailContact, 1, { x: "-75%", y: "75%" }, "-=1");
+ 
+    }
+    
+
+
+
+}
+
+function contactOff(e) {
+   navtogleScene.to(githubArrow, 1,{ width: "0%", height: "0%" });
+   navtogleScene.to(githubContact, 1, { x: "0%", y: "0%" }, "-=1");
+   navtogleScene.to(LinkinArrow, 1, { width: "0%", height: "0%" },"-=1");
+   navtogleScene.to(LinkinContact, 1, { x: "0%", y: "0%" }, "-=1");
+   navtogleScene.to(facebookArrow, 1, { width: "0%", height: "0%" },"-=1");
+   navtogleScene.to(facebookContact, 1, { x: "0%" }, "-=1");
+   navtogleScene.to(twitterArrow, 1, { width: "0%", height: "0%" },"-=1");
+   navtogleScene.to(twitterContact, 1, { x: "0%",y:"0%" }, "-=1");
+   navtogleScene.to(gmailArrow, 1, { width: "0%", height: "0%" },"-=1");
+   navtogleScene.to(gmailContact, 1, { x: "0%",y:"0%" }, "-=1");
+}
 
 
 
@@ -124,8 +201,8 @@ sections.forEach((slide, index, slides) => {
   const pageTl = gsap.timeline();
   let nextSlide = slides.length - 1 === index ? "end" : slides[index + 1];
   pageTl.fromTo(nextSlide, 4, { y: "0%" }, { y: "50%" });
-  pageTl.fromTo(slide, 4, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.4 });
-  pageTl.fromTo(nextSlide, 4, { y: "50%" }, { y: "0%" }, "-=4.5");
+  pageTl.fromTo(slide, 6, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.4 });
+  pageTl.fromTo(nextSlide, 4, { y: "50%" }, { y: "0%" }, "-=6.5");
   pageTl.fromTo(burger, 6, { y: "-1000%" }, { y: "0%" });
   pageTl.fromTo(logo, 6, { y: "-1000%" }, { y: "0%" }, "-=2");
 
@@ -144,7 +221,7 @@ sections.forEach((slide, index, slides) => {
 
       .setPin(introPage, { pushFollowers: false })
       .setTween(pageTl)
-      .addTo(controller2);
+      .addTo(controller);
 
   }
   else {
@@ -160,7 +237,7 @@ sections.forEach((slide, index, slides) => {
 
       .setPin(slide, { pushFollowers: false })
       .setTween(pageTl)
-      .addTo(controller2);
+      .addTo(controller);
 
   }
 
@@ -179,3 +256,7 @@ sections.forEach((slide, index, slides) => {
 
 ////EventListeners
 burger.addEventListener("click", navTogle);
+contactImg.addEventListener("mouseenter", contactOn);
+contactImg.addEventListener("mouseleave", contactOff);
+
+

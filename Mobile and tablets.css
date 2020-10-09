@@ -1,0 +1,138 @@
+/* Mobile view  */
+@media(min-width:100px )and ( max-width:700px){
+
+    .contact{
+      width:60%;
+      max-height:75%; 
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+       margin-top: 3%;
+       display: flex;
+       position: relative;
+       border-radius: 800px;
+       overflow: hidden !important;
+       
+    }
+
+
+    
+
+    .miniCircles{
+      width:12.5% ;
+      height:14%;
+      border-radius: 70%;
+     position: relative;
+     overflow: hidden;
+   
+    
+   }
+
+   
+
+.githubContact{
+  position: absolute;
+  top:34%;
+  left: 19%; 
+}
+
+.LinkinContact{
+position: absolute;
+top:29%;
+left: 54%; 
+}
+
+.gmailContact{
+position: absolute;
+  top:56%;
+  left: 22%;
+}
+
+.twitterContact{
+position: absolute;
+top:59%;
+left: 56%;
+
+}
+
+
+.facebookContact{
+position: absolute;
+top:45%;
+left: 74%; 
+}
+
+  
+  }
+  
+
+
+  /* Tablet view  */
+
+
+  @media(min-width:700px) and (max-width:1025px){
+
+    .contact{
+      width:60%;
+      max-height:75%; 
+      position: absolute;
+      top: 50%;
+      left: 53%;
+      transform: translate(-50%,-50%);
+       display: flex;
+       position: relative;
+       border-radius: 800px;
+       overflow: hidden !important;
+       
+    }
+
+    
+    .miniCircles{
+      width:12.5% ;
+      height:14%;
+      border-radius: 70%;
+     position: relative;
+     overflow: hidden;
+   
+    
+   }
+
+   
+
+.githubContact{
+  position: absolute;
+  top:31%;
+  left: 21%; 
+}
+
+.LinkinContact{
+position: absolute;
+top:22%;
+left: 54%; 
+}
+
+.gmailContact{
+position: absolute;
+  top:59%;
+  left: 22%;
+}
+
+.twitterContact{
+position: absolute;
+top:67%;
+left: 58%;
+
+}
+
+
+.facebookContact{
+position: absolute;
+top:45%;
+left: 77%; 
+}
+  
+  
+  
+  }
+  

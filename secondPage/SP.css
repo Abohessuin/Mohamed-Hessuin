@@ -1,0 +1,181 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  
+ 
+}
+
+@font-face{
+  src: url(../Materials/fonts/avanir/AvenirNextLTPro-Bold.otf);
+   font-family:aveBold;
+   src: url(.//Materials/fonts/gilroy/Radomir\ Tinkov\ -\ Gilroy-ExtraBold.otf);
+   font-family: gilroy;
+   src: url(../Materials/fonts/Cera-Pro/CeraRoundProDEMO-Regular.otf);
+   font-family: cera;
+}
+
+
+#contactPage{
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../Materials/photos/pexels-kaique-rocha-125510.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  
+}
+.contactPageOverlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(10, 10, 22);
+  opacity: 0.7;
+  
+ 
+}
+
+.contact{
+  width:30%;
+  max-height:75%; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+   margin-top: 3%;
+   display: flex;
+   border-radius: 800px;
+   overflow: hidden !important;
+   position: relative;
+   pointer-events: painted;
+   
+}
+
+.contact:hover{
+  box-shadow: 4px 4px  rgb(10, 10, 22);
+
+}
+
+.contactImg{
+   max-width: 100%;
+   max-height: 100%;
+   object-fit: cover;
+   opacity: 0.65;
+
+ 
+}
+
+
+.contactContainer{
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  position: relative;
+  overflow: hidden;
+  
+}
+.githubArrow{
+   position: absolute;
+   top:26.8%;
+   left: 34.7%; 
+   background-color:blueviolet;
+   transform: rotate(120deg);
+   }
+
+.LinkinArrow{
+    position: absolute;
+    top:16%;
+    left: 57.6%; 
+    background-color:rgb(113, 173, 241);
+    transform: rotate(-120deg);
+    }
+.facebookArrow{
+      position: absolute;
+      top:48%;
+      left: 68.5%; 
+      background-color:rgb(113, 173, 241);
+      transform: rotate(90deg);
+    }
+
+.twitterArrow{
+  position: absolute;
+  top:78.8%;
+  left: 61.8%;
+  background-color:black;
+  transform: rotate(150deg);
+
+}
+
+.gmailArrow{
+  position: absolute;
+  top:70%;
+  left: 34.5%;
+  background-color:rgb(127, 255, 238);
+  transform: rotate(-300deg);
+
+}
+      
+.miniCircles{
+   width:10.5% ;
+   height:14%;
+   border-radius: 70%;
+  position: relative;
+  overflow: hidden;
+
+ 
+}
+
+.miniCircles:hover{
+  box-shadow:5px 5px black ;
+  transition: all 1s ease-in-out;
+}
+
+.logoImg{
+ max-width: 100%;
+ max-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+}
+
+
+
+.githubContact{
+     position: absolute;
+     top:30%;
+     left: 31.5%; 
+}
+
+.LinkinContact{
+  position: absolute;
+  top:19%;
+  left: 50%; 
+}
+
+.gmailContact{
+  position: absolute;
+     top:66%;
+     left: 32%;
+}
+
+.twitterContact{
+  position: absolute;
+  top:78%;
+  left: 51%;
+
+}
+
+
+.facebookContact{
+  position: absolute;
+  top:48%;
+  left: 60%; 
+}
