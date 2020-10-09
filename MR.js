@@ -119,6 +119,62 @@ function navTogle(e) {
 
 
 
+let pageScene;
+sections.forEach((slide, index, slides) => {
+  const pageTl = gsap.timeline();
+  let nextSlide = slides.length - 1 === index ? "end" : slides[index + 1];
+  pageTl.fromTo(nextSlide, 4, { y: "0%" }, { y: "50%" });
+  pageTl.fromTo(slide, 4, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.4 });
+  pageTl.fromTo(nextSlide, 4, { y: "50%" }, { y: "0%" }, "-=4.5");
+  pageTl.fromTo(burger, 6, { y: "-1000%" }, { y: "0%" });
+  pageTl.fromTo(logo, 6, { y: "-1000%" }, { y: "0%" }, "-=2");
+
+  //Create new scene
+  if (slide.id === "introPage") {
+    pageScene = new ScrollMagic.Scene({
+      triggerElement: slide,
+      duration: "100%",
+      triggerHook: 0,
+      offset: 9200
+    })
+
+
+
+
+
+      .setPin(introPage, { pushFollowers: false })
+      .setTween(pageTl)
+      .addTo(controller2);
+
+  }
+  else {
+    pageScene = new ScrollMagic.Scene({
+      triggerElement: slide,
+      duration: "100%",
+      triggerHook: 0
+    })
+
+
+
+
+
+      .setPin(slide, { pushFollowers: false })
+      .setTween(pageTl)
+      .addTo(controller2);
+
+  }
+
+
+
+
+});
+
+
+
+
+
+
+
 
 
 ////EventListeners

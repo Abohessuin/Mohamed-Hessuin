@@ -215,3 +215,107 @@
   }
   
 
+  #aboutPage{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("./Materials/photos/pexels-ave-calvar-martinez-3497624.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden !important;
+  }
+  .aboutOverlay{
+     height: 100%;
+     width: 100%;
+     position: absolute;
+     top: 0px;
+     left: 0px;
+     background-color: rgb(10, 10, 22);
+    
+  }
+
+  .aboutContent{
+    
+    width:65%;
+    max-height:60%; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+     margin-top: 2.5rem;
+     display: flex;
+     justify-content: flex-end;
+     position: relative;
+     overflow: hidden !important;
+    }
+   
+   
+  .aboutImage{
+    max-width:70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0.3;
+   
+    
+   
+   
+   
+  
+  }
+
+  .aboutimg{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  
+    
+  }
+
+   
+  
+
+  .aboutText{
+
+ 
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+    font-size:2vw;
+    color:white;
+    position: absolute;
+    top: 7%;
+    left: 5%;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-shadow: 3.5px 3.5px black;
+    clip-path: circle(0%  at 20% 20%);
+    
+  }
+  .resumeButt{
+     display: flex;
+     justify-content: space-between;
+     width:43.5%;
+     max-height: 59px;;
+     font-size: 1.42vw;
+     padding: 10px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 11px;
+     background-color: yellow;
+     color:black;
+     border: none;
+     margin-top: 5px;
+     border-radius: 15px;
+     outline: none;
+    
+  }
+  
+  .resumeButt:hover{
+    text-shadow: 6px 6px 6px black;
+    transition: all 0.4s ease 0s;
+  }
+  .aboutEdit{
+    color: yellow;
+  }
