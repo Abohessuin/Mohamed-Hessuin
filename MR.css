@@ -2,9 +2,17 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
-   
- 
+  
+    
+}
+
+body{
+  position: relative;
+  overflow-x: hidden;
+}
+
+main{
+  position: absolute;
 }
 
 @font-face{
@@ -128,6 +136,7 @@
     cursor: pointer;
     margin-right: 5%;
     min-height: 5vh;
+    z-index: 100;
   }
 
   .nav-img{
@@ -148,6 +157,7 @@
       color: red;
       text-decoration: none;
     
+      
       
   }
 
@@ -215,6 +225,7 @@
   }
   
 
+
   #aboutPage{
     height: 100vh;
     width: 100vw;
@@ -269,6 +280,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+    overflow: hidden;
   
     
   }
@@ -277,8 +289,6 @@
   
 
   .aboutText{
-
- 
     display: flex;
     flex-direction: column;
     z-index: 20;
@@ -288,10 +298,12 @@
     top: 7%;
     left: 5%;
     font-family: 'Roboto Condensed', sans-serif;
-    text-shadow: 3.5px 3.5px black;
+    text-shadow: 5px 5px black;
     clip-path: circle(0%  at 20% 20%);
-    
+    overflow: hidden;
+    height: 100%;
   }
+
   .resumeButt{
      display: flex;
      justify-content: space-between;
@@ -319,3 +331,113 @@
   .aboutEdit{
     color: yellow;
   }
+  .insideText{
+    height: 10%;
+  }
+.transitionBetweenPages{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(16, 16, 36);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    z-index: 6;
+    overflow: hidden;
+  }
+
+  
+.transitionLogo{
+  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;    
+  padding: 2.5%;
+  border: 2.5px dotted #EB2188;
+  box-shadow:8px 8px black;
+  overflow: hidden;
+  
+}
+
+.logoText{
+  color: white;
+  font-family: 'Stalemate', cursive;
+  font-size: 8vw;
+  text-shadow: 11px 11px black;
+  text-align: center;
+  font-weight: 600;
+  border: 5px 5px solid red;
+  margin-top: 3%;
+  margin-right: 2%;
+  
+}
+
+.logoOverlay{
+  width: 100%;
+  height: 20%;
+  background-color:rgb(16, 16, 36) ;
+  position: absolute;
+  top: 11%;
+  left: 0;
+}
+.logoOverlay2{
+  width: 100%;
+  height: 20%;
+  background-color:rgb(16, 16, 36) ;
+  position: absolute;
+  top: 30%;
+  left: 0;
+}
+.logoOverlay3{
+  width: 100%;
+  height: 20%;
+  background-color:rgb(16, 16, 36) ;
+  position: absolute;
+  top: 49%;
+  left: 0;
+}
+.logoOverlay4{
+  width: 100%;
+  height: 20%;
+  background-color:rgb(16, 16, 36) ;
+  position: absolute;
+  top: 60%;
+  left: 0;
+}
+
+.swipe {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  overflow: hidden;
+}
+.swipe1 {
+  background: rgb(167, 110, 231);
+  z-index: 5;
+}
+.swipe2 {
+  background: rgb(86, 124, 228);
+  z-index: 4;
+}
+.swipe3 {
+  background: rgb(255, 139, 93);
+  z-index: 3;
+}
+
+.m{
+   color: rgb(167, 110, 231);
+}
+
+.h{
+ 
+   color:rgb(255, 139, 93) ;  
+}
+
+.dot{
+  color:rgb(86, 124, 228);
+}
