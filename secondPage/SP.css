@@ -2,10 +2,12 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
+
   
  
 }
+
+
 
 @font-face{
   src: url(../Materials/fonts/avanir/AvenirNextLTPro-Bold.otf);
@@ -124,7 +126,7 @@
 .miniCircles{
    width:10.5% ;
    height:14%;
-   border-radius: 70%;
+   border-radius:50%;
   position: relative;
   overflow: hidden;
 
@@ -179,3 +181,4 @@
   top:48%;
   left: 60%; 
 }
+
