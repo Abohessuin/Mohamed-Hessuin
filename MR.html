@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./lib/animate.css">
     <link rel="stylesheet" type="text/css" href="MR.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Montserrat&display=swap" rel="stylesheet" />
@@ -52,7 +51,7 @@
     </nav>
 
     <main data-barba="container" data-barba-namespace="firstPage">
-        <section id="introPage">
+        <section id="introPage" class="slideanim">
 
             <video class="introVideo" src="./Materials/Videos/MVI_0115_1_1.mp4"></video>
             <div class="introText1">
@@ -63,7 +62,7 @@
 
 
         </section>
-        <section id="aboutPage">
+        <section id="aboutPage" class="slideanim">
             <div class="aboutOverlay"></div>
             <div class="aboutContent">
 
@@ -76,15 +75,32 @@
                     <div class="insideText">And Artificial intellignce<span class="aboutEdit"> Cairo universty</span>
                     </div>
                     <div class="insideText">2017-2021</div>
-                    <a style="text-decoration:none" href="./Materials/CV/Mohamed Hussein Mohassab - cv.pdf"
-                        download="Mohamed-Hessuin-Resume">
-                        <button class="resumeButt">
-                            <div>Download Resume</div>
-                            <div><i class="fas fa-download"></i></div>
-                        </button>
-                    </a>
+                    <div class="butts">
+                        <a class="resumeButt" style="text-decoration:none" href="./Materials/CV/Mohamed Hussein Mohassab - cv.pdf"
+                            download="Mohamed-Hessuin-Resume">
+                            <button class="r">
+                                <div class="insidebutt">
+                                    <div>Download</div>
+                                    <div class="mid"></div>
+                                    <div>Resume</div>
+                                    <div class="mid"></div>
+                                    <div><i class="fas fa-download"></i></div>
+                                </div>
+                            </button>
+                        </a>
+                        <a class="resumeButt" style="text-decoration:none" href="secondPage/SP.html">
+                            <button class="r">
+                                <div class="insidebutt">
+                                    <div>Discover</div>
+                                    <div class="mid"></div>
+                                    <div>More</div>
+                                    <div class="mid"></div>
+                                    <div><i class="fas fa-eye"></i></div>
+                                </div>
+                            </button>
+                        </a>
+                    </div>
                 </div>
-
 
                 <div class="aboutImage">
                     <img class="img-part-1 aboutimg"
@@ -107,15 +123,14 @@
     <div class="transitionBetweenPages">
         <div class="transitionLogo">
 
-            <div class="logoText"><span class="m">M</span><span class="dot">.</span>
-            <spna class="h">H</spna>
+            <div class="logoText"><span class="m">M</span><span class="dot">.</span><span class="h">H</span>
             </div>
             <div class="logoOverlay"></div>
             <div class="logoOverlay2"></div>
             <div class="logoOverlay3"></div>
             <div class="logoOverlay4"></div>
         </div>
-   </div>
+    </div>
 
     <div class="swipe swipe1"></div>
     <div class="swipe swipe2"></div>

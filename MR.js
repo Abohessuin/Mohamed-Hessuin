@@ -4,8 +4,9 @@ let introTextScene;
 let aboutOffScene;
 let contactScene;
 let pageScene;
+let pageScene2;
 let controller;
-const burgerr = document.querySelector(".burger")
+const burgerr = document.querySelector(".burger");
 
 
 //Functions
@@ -66,7 +67,7 @@ function introFPage() {
   introTextAnim.fromTo(introText2, 1.5, { color: "white" }, { color: "blueviolet" });
 
   introVideoScene = new ScrollMagic.Scene({
-    duration: "9200",
+    duration: "9250",
     triggerElement: introPage,
     triggerHook: 0
   })
@@ -135,7 +136,7 @@ function aboutFPage() {
   aboutPageGsp.to(imgpart1, 1.1, { opacity: "0.8" });
   aboutPageGsp.to(imgpart2, 1.1, { opacity: "0.8" });
   aboutPageGsp.to(imgpart3, 1.1, { opacity: "0.8" });
-  aboutPageGsp.to(aboutText, 4, { clipPath: "circle(100%  at 20% 20%)" });
+  aboutPageGsp.to(aboutText, 4, { clipPath: "circle(100%  at 30% 30%)" });
   
 
    aboutOffScene = new ScrollMagic.Scene({
@@ -217,7 +218,7 @@ function contactOff(e) {
 function contactFPage() {
 
   const contact = document.querySelector(".contact");
-  const contactPage = document.querySelector(".contactPage");
+  const contactPage = document.querySelector("#contactPage");
   const contactImg = document.querySelector(".contactImg");
   const githubContact = document.querySelector(".githubContact");
   const LinkinContact = document.querySelector(".LinkinContact");
@@ -229,7 +230,7 @@ function contactFPage() {
    controller = new ScrollMagic.Controller();
 
   const contactPageGsap = gsap.timeline();
-  contactPageGsap.fromTo(contact, 5, { opacity: 0 }, { opacity: 0.9 });
+  contactPageGsap.fromTo(contact, 5, { opacity: "0" }, { opacity: "0.9" });
   contactPageGsap.fromTo(contact, 6, { scale: "0" }, { scale: "1" }, "-=7");
   contactPageGsap.fromTo(githubContact, 2.5, { x: "-400%", y: "-400%" }, { x: "0%", y: "0%" }, "-=2.5");
   contactPageGsap.fromTo(gmailContact, 2.5, { x: "-400%", y: "400%" }, { x: "0%", y: "0%" }, "-=2.5");
@@ -240,16 +241,15 @@ function contactFPage() {
 
   contactScene = new ScrollMagic.Scene({
     triggerElement: contactPage,
-    triggerHook: 0
+    triggerHook: 0,
+    reverse:true
+    
   })
-    /*
-    .addIndicators({
-      colorStart:"black",
-      colorTrigger:"white"
-    })
-    */
+    
+    
+    
     .setTween(contactPageGsap)
-    .addTo(controller)
+    .addTo(controller);
 
   contactImg.addEventListener("mouseenter", contactOn);
   contactImg.addEventListener("mouseleave", contactOff);
@@ -265,16 +265,16 @@ function slidesAnimation() {
   const burger = document.querySelector(".burger")
   const logo = document.querySelector(".logoo");
   const introPage = document.querySelector("#introPage");
-  const sections = document.querySelectorAll("section");
+  const sections = document.querySelectorAll(".slideanim");
   controller = new ScrollMagic.Controller();
   sections.forEach((slide, index, slides) => {
     const pageTl = gsap.timeline();
     let nextSlide = slides.length - 1 === index ? "end" : slides[index + 1];
-    pageTl.fromTo(nextSlide, 4, { y: "0%" }, { y: "50%" });
-    pageTl.fromTo(slide, 6, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.4 });
-    pageTl.fromTo(nextSlide, 4, { y: "50%" }, { y: "0%" }, "-=6.5");
-    pageTl.fromTo(burger, 6, { y: "-1000%" }, { y: "0%" });
-    pageTl.fromTo(logo, 6, { y: "-1000%" }, { y: "0%" }, "-=2");
+    pageTl.fromTo(nextSlide, 30, { y: "0%" }, { y: "50%" });
+    pageTl.fromTo(slide, 30, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.4 });
+    pageTl.fromTo(nextSlide, 30, { y: "50%" }, { y: "0%" }, "-=29.5");
+    pageTl.fromTo(burger, 6, { y: "-300%" }, { y: "0%" });
+    pageTl.fromTo(logo, 6, { y: "-300%" }, { y: "0%" }, "-=2");
 
     //Create new scene
     if (slide.id === "introPage") {
@@ -320,6 +320,40 @@ function slidesAnimation() {
 
 
 
+function slidesAnimation2() {
+  const burger = document.querySelector(".burger")
+  const logo = document.querySelector(".logoo");
+  const sections = document.querySelectorAll(".slideanim2");
+  controller = new ScrollMagic.Controller();
+  sections.forEach((slide, index, slides) => {
+    const pageTl = gsap.timeline();
+    let nextSlide = slides.length - 1 === index ? "end" : slides[index + 1];
+    pageTl.fromTo(nextSlide, 50, { y: "0%" }, { y: "50%" });
+    pageTl.fromTo(slide, 50, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.4 });
+    pageTl.fromTo(nextSlide, 50, { y: "50%" }, { y: "0%" }, "-=49.5");
+    pageTl.fromTo(burger, 6, { y: "-300%" }, { y: "0%" });
+    pageTl.fromTo(logo, 6, { y: "-300%" }, { y: "0%" }, "-=2");
+      
+    pageScene2 = new ScrollMagic.Scene({
+        triggerElement: slide,
+        duration: "100%",
+        triggerHook: 0
+      })
+
+      .setPin(slide, { pushFollowers: false })
+      .setTween(pageTl)
+      .addTo(controller);
+
+
+
+
+
+
+  });
+}
+
+
+
 
 ////EventListeners
 burgerr.addEventListener("click", navTogle);
@@ -335,12 +369,13 @@ burgerr.addEventListener("click", navTogle);
 //TRANSITIONS BETWEEN PAGES
 
 barba.init({
-  views: [
+  views:[
     {
-      namespace: "firstPage",
-      beforeEnter() {
+      namespace: 'firstPage',
+      afterEnter() {
         introFPage();
         aboutFPage();
+        slidesAnimation();
         logo.href = "./MR.html";
 
       },
@@ -348,18 +383,21 @@ barba.init({
         introVideoScene.destroy();
         introTextScene.destroy();
         aboutOffScene.destroy();
+        pageScene.destroy();
         controller.destroy();
       }
     },
     {
-      namespace: "secondPage",
-      beforeEnter() {
-        bringNavIntoPage();
+      namespace: 'secondPage',
+      beforeEnter() { 
         contactFPage();
+        bringNavIntoPage();
+        slidesAnimation2();
         logo.href = "../MR.html";
       },
       beforeLeave() {
         contactScene.destroy();
+        pageScene2.destroy();
         controller.destroy();
       }
     }
@@ -370,25 +408,26 @@ barba.init({
        
        let done = this.async();
         const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-        tl.fromTo(current.container, 1, { opacity: 1 }, { opacity: 0 });
+        tl.fromTo(current.container, 3, { opacity: 1 }, { opacity: 0 });
         tl.fromTo(".transitionBetweenPages",3,{x:"-100%"},{x:"0%"});
         tl.fromTo(".logoOverlay",2.5,{x:"0%"},{x:"300%"});
         tl.fromTo(".logoOverlay2",2.5,{x:"0%"},{x:"-300%"},"-=1.5");
         tl.fromTo(".logoOverlay3",2.5,{x:"0%"},{x:"300%"});
         tl.fromTo(".logoOverlay4",2.5,{x:"0%"},{x:"-300%"},"-=1.5");
         tl.fromTo( ".swipe",0.75,{ x: "-100%" },{ x: "0%", onComplete: done }, "-=0.5");
-
+77
 
       },
       enter({ current, next }) {
         let done = this.async();
+        window.scroll(0,0)
         //Scroll to the top
 
         //An Animation
         const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-        tl.fromTo(".transitionBetweenPages",3,{x:"0%"},{x:"100%"});
+        tl.fromTo(".transitionBetweenPages",3,{x:"0%"},{x:"100%"},"-=5");
         tl.fromTo( ".swipe",1,{ x: "0%" }, { x: "100%", stagger: 1, onComplete: done });
-        tl.fromTo(next.container, 1, { opacity: 0 }, { opacity: 1 });
+        tl.fromTo(next.container, 3, { opacity: 0 }, { opacity: 1 });
        
 
       }
