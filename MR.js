@@ -6,12 +6,41 @@ let contactScene;
 let pageScene;
 let pageScene2;
 let controller;
+
+
+
+
+
+//nav events
 const burgerr = document.querySelector(".burger");
+const introPage = document.querySelector("#introPage");
+const aboutPage = document.querySelector("#aboutPage");
+const contactPage = document.querySelector("#contactPage");
+const navli1 = document.querySelector(".nav-li-1");
+const navli2 = document.querySelector(".nav-li-2");
+const navli3 = document.querySelector(".nav-li-3");
+const navli4 = document.querySelector(".nav-li-4");
+
+
+
+
+burgerr.addEventListener("click",navTogle);
+
 
 
 //Functions
 
-function bringNavIntoPage(){
+function removeNav() {
+  const navtogleScene = gsap.timeline();
+  burgerr.classList.remove("active-nav");
+  navtogleScene.to(".line1", 0.5, { rotate: "0", y: 0 });
+  navtogleScene.to(".line2", 0.5, { rotate: "0", y: 0 }, "-=0.5");
+  navtogleScene.to(".nav-bar", 1.2, { clipPath: "circle(50px at 100% -10%)" });
+  navtogleScene.to(".nav-overlayeranimation", 2, { x: "0%" }, "-=0.5")
+}
+
+
+function bringNavIntoPage() {
   const burger = document.querySelector(".burger")
   const logo = document.querySelector(".logoo");
   const navAnim = gsap.timeline();
@@ -19,7 +48,7 @@ function bringNavIntoPage(){
   navAnim.fromTo(logo, 2, { y: "-300%" }, { y: "0%" }, "-=2");
 }
 
-function moveNavoutPage(){
+function moveNavoutPage() {
   const burger = document.querySelector(".burger")
   const logo = document.querySelector(".logoo");
   const navAnim = gsap.timeline();
@@ -37,6 +66,7 @@ function navTogle(e) {
     navtogleScene.to(".nav-bar", 1.2, { clipPath: "circle(2500px at 100% -10%)" });
     navtogleScene.to(".nav-overlayeranimation", 2, { x: "100%" })
   } else {
+    console.log("hey"); 
     e.target.classList.remove("active-nav");
     navtogleScene.to(".line1", 0.5, { rotate: "0", y: 0 });
     navtogleScene.to(".line2", 0.5, { rotate: "0", y: 0 }, "-=0.5");
@@ -122,7 +152,7 @@ function aboutFPage() {
   const aboutText = document.querySelector(".aboutText");
 
 
-   controller = new ScrollMagic.Controller();
+  controller = new ScrollMagic.Controller();
   // about page Gsap
   const aboutPageGsp = gsap.timeline();
   aboutPageGsp.fromTo(aboutOverlay, 2, { opacity: "0" }, { opacity: "0.8" });
@@ -137,9 +167,9 @@ function aboutFPage() {
   aboutPageGsp.to(imgpart2, 1.1, { opacity: "0.8" });
   aboutPageGsp.to(imgpart3, 1.1, { opacity: "0.8" });
   aboutPageGsp.to(aboutText, 4, { clipPath: "circle(100%  at 30% 30%)" });
-  
 
-   aboutOffScene = new ScrollMagic.Scene({
+
+  aboutOffScene = new ScrollMagic.Scene({
     triggerElement: aboutPage,
     triggerHook: 0.2
   })
@@ -227,7 +257,7 @@ function contactFPage() {
   const facebookContact = document.querySelector(".facebookContact");
 
   // COntact page Gsap
-   controller = new ScrollMagic.Controller();
+  controller = new ScrollMagic.Controller();
 
   const contactPageGsap = gsap.timeline();
   contactPageGsap.fromTo(contact, 5, { opacity: "0" }, { opacity: "0.9" });
@@ -236,23 +266,154 @@ function contactFPage() {
   contactPageGsap.fromTo(gmailContact, 2.5, { x: "-400%", y: "400%" }, { x: "0%", y: "0%" }, "-=2.5");
   contactPageGsap.fromTo(LinkinContact, 2.5, { x: "400%", y: "-400%" }, { x: "0%", y: "0%" }, "-=2.5");
   contactPageGsap.fromTo(twitterContact, 2.5, { x: "-400%", y: "400%" }, { x: "0%", y: "0%" }, "-=2.5");
-  contactPageGsap.fromTo(facebookContact, 2.5, { x: "400%" }, { x: "0%" }, "-=2.5");  
+  contactPageGsap.fromTo(facebookContact, 2.5, { x: "400%" }, { x: "0%" }, "-=2.5");
 
 
   contactScene = new ScrollMagic.Scene({
     triggerElement: contactPage,
     triggerHook: 0,
-    reverse:true
-    
+    reverse: true
+
   })
-    
-    
-    
+
+
+
     .setTween(contactPageGsap)
     .addTo(controller);
 
   contactImg.addEventListener("mouseenter", contactOn);
   contactImg.addEventListener("mouseleave", contactOff);
+
+
+}
+
+function projectFpage() {
+  bringNavIntoPage();
+  const slides = document.querySelectorAll(
+    ".projects-section .wrapperr .containerr .slide"
+  );
+  const nextbtn = document.querySelector("#Next");
+  const prevbtn = document.querySelector("#Prev");
+  const dots = document.querySelectorAll(".dot");
+  const Divs = document.querySelectorAll(".projects-section .des");
+  const wrapper = document.querySelector(".projects-section .wrapperr");
+  const closebtns = document.querySelectorAll(
+    ".projects-section .des .fa-times-circle"
+  );
+  const proname = document.querySelectorAll(".des .proname h3");
+  const desc = document.querySelectorAll(".des .desc h5");
+  var currentslide = 0;
+
+  slides.forEach((img, i) => {
+    img.style.display = "none";
+    dots[i].style.background = "#c2c9c6";
+
+    img.addEventListener("click", () => {
+      const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+      Divs[i].style.display = "inline";
+      tl.fromTo(
+        Divs[i],
+        1,
+        { opacity: 0 },
+
+        { opacity: 1 }
+      )
+        .fromTo(
+          wrapper,
+          0.1,
+          { opacity: 1 },
+
+          { opacity: 0.9 },
+          "-=0.5"
+        )
+        .fromTo(Divs[i], 0.7, { skewX: 90 }, { skewX: 0 });
+      wrapper.style.filter = "blur(3px)";
+
+      tl.fromTo(
+        proname[i],
+        0.8,
+        { scale: 0 },
+
+        { scale: 1 },
+        "+=0.05"
+      ).fromTo(desc[i], 0.8, { scale: 0 }, { scale: 1 }, "+=0.025");
+    });
+
+    closebtns[i].addEventListener("click", () => {
+      const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+
+      tl.fromTo(
+        wrapper,
+        0.5,
+        { opacity: 0.9 },
+
+        { opacity: 1 },
+        "-=0.5"
+      )
+        .fromTo(Divs[i], 0.7, { skewX: 0 }, { skewX: 90 })
+        .fromTo(
+          Divs[i],
+          1,
+          { opacity: 1 },
+
+          { opacity: 0 }
+        );
+      wrapper.style.filter = "blur(0px)";
+    });
+
+    closebtns[i].addEventListener("mouseover", () => {
+      console.log("mo");
+      const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+      console.log(proname[0]);
+      tl.fromTo(
+        proname[i],
+        1,
+        { rotationX: 0 },
+
+        { rotationX: 90 }
+      );
+    });
+
+    closebtns[i].addEventListener("mouseout", () => {
+      const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+
+      tl.fromTo(
+        proname[i],
+        1,
+        { rotationX: 90 },
+
+        { rotationX: 0 }
+      );
+    });
+  });
+
+  slides[currentslide].style.display = "inline";
+  dots[currentslide].style.background = "#b34854";
+
+
+  nextbtn.addEventListener("click", () => {
+    slides[currentslide].style.display = "none";
+    dots[currentslide].style.background = "#f9f5f3";
+
+    if (currentslide == slides.length - 1) {
+      currentslide = -1;
+    }
+
+    currentslide++;
+    slides[currentslide].style.display = "inline";
+    dots[currentslide].style.background = "#b34854";
+  });
+
+  prevbtn.addEventListener("click", () => {
+    slides[currentslide].style.display = "none";
+    dots[currentslide].style.background = "#f9f5f3";
+    if (currentslide == 0) {
+      currentslide = slides.length;
+    }
+    currentslide--;
+    slides[currentslide].style.display = "inline";
+    dots[currentslide].style.background = "#b34854";
+  });
 
 
 }
@@ -273,8 +434,8 @@ function slidesAnimation() {
     pageTl.fromTo(nextSlide, 30, { y: "0%" }, { y: "50%" });
     pageTl.fromTo(slide, 30, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.4 });
     pageTl.fromTo(nextSlide, 30, { y: "50%" }, { y: "0%" }, "-=29.5");
-    pageTl.fromTo(burger, 6, { y: "-300%" }, { y: "0%" });
-    pageTl.fromTo(logo, 6, { y: "-300%" }, { y: "0%" }, "-=2");
+    pageTl.fromTo(burger, 2, { y: "-300%" }, { y: "0%" });
+    pageTl.fromTo(logo, 2, { y: "-300%" }, { y: "0%" }, "-=2");
 
     //Create new scene
     if (slide.id === "introPage") {
@@ -331,14 +492,14 @@ function slidesAnimation2() {
     pageTl.fromTo(nextSlide, 50, { y: "0%" }, { y: "50%" });
     pageTl.fromTo(slide, 50, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.4 });
     pageTl.fromTo(nextSlide, 50, { y: "50%" }, { y: "0%" }, "-=49.5");
-    pageTl.fromTo(burger, 6, { y: "-300%" }, { y: "0%" });
-    pageTl.fromTo(logo, 6, { y: "-300%" }, { y: "0%" }, "-=2");
-      
+    pageTl.fromTo(burger, 2, { y: "-300%" }, { y: "0%" });
+    pageTl.fromTo(logo, 2, { y: "-300%" }, { y: "0%" }, "-=2");
+
     pageScene2 = new ScrollMagic.Scene({
-        triggerElement: slide,
-        duration: "100%",
-        triggerHook: 0
-      })
+      triggerElement: slide,
+      duration: "100%",
+      triggerHook: 0,
+    })
 
       .setPin(slide, { pushFollowers: false })
       .setTween(pageTl)
@@ -355,21 +516,11 @@ function slidesAnimation2() {
 
 
 
-////EventListeners
-burgerr.addEventListener("click", navTogle);
-
-
-
-
-
-
-
-
 
 //TRANSITIONS BETWEEN PAGES
 
 barba.init({
-  views:[
+  views: [
     {
       namespace: 'firstPage',
       afterEnter() {
@@ -385,50 +536,54 @@ barba.init({
         aboutOffScene.destroy();
         pageScene.destroy();
         controller.destroy();
+        removeNav();
       }
     },
     {
       namespace: 'secondPage',
-      beforeEnter() { 
-        contactFPage();
+      beforeEnter() {
         bringNavIntoPage();
-        slidesAnimation2();
+        projectFpage();
+        contactFPage();
+       slidesAnimation2();
         logo.href = "../MR.html";
       },
       beforeLeave() {
         contactScene.destroy();
         pageScene2.destroy();
         controller.destroy();
+        removeNav();
+
       }
     }
   ],
   transitions: [
     {
       leave({ current, next }) {
-       
-       let done = this.async();
+
+        let done = this.async();
         const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
         tl.fromTo(current.container, 3, { opacity: 1 }, { opacity: 0 });
-        tl.fromTo(".transitionBetweenPages",3,{x:"-100%"},{x:"0%"});
-        tl.fromTo(".logoOverlay",2.5,{x:"0%"},{x:"300%"});
-        tl.fromTo(".logoOverlay2",2.5,{x:"0%"},{x:"-300%"},"-=1.5");
-        tl.fromTo(".logoOverlay3",2.5,{x:"0%"},{x:"300%"});
-        tl.fromTo(".logoOverlay4",2.5,{x:"0%"},{x:"-300%"},"-=1.5");
-        tl.fromTo( ".swipe",0.75,{ x: "-100%" },{ x: "0%", onComplete: done }, "-=0.5");
-77
+        tl.fromTo(".transitionBetweenPages", 3, { x: "-100%" }, { x: "0%" });
+        tl.fromTo(".logoOverlay", 2.5, { x: "0%" }, { x: "300%" });
+        tl.fromTo(".logoOverlay2", 2.5, { x: "0%" }, { x: "-300%" }, "-=1.5");
+        tl.fromTo(".logoOverlay3", 2.5, { x: "0%" }, { x: "300%" });
+        tl.fromTo(".logoOverlay4", 2.5, { x: "0%" }, { x: "-300%" }, "-=1.5");
+        tl.fromTo(".swipe", 0.75, { x: "-100%" }, { x: "0%", onComplete: done }, "-=0.5");
+
 
       },
       enter({ current, next }) {
         let done = this.async();
-        window.scroll(0,0)
+        window.scroll(0, 0)
         //Scroll to the top
 
         //An Animation
         const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-        tl.fromTo(".transitionBetweenPages",3,{x:"0%"},{x:"100%"},"-=5");
-        tl.fromTo( ".swipe",1,{ x: "0%" }, { x: "100%", stagger: 1, onComplete: done });
+        tl.fromTo(".transitionBetweenPages", 3, { x: "0%" }, { x: "100%" }, "-=5");
+        tl.fromTo(".swipe", 1, { x: "0%" }, { x: "100%", stagger: 1, onComplete: done });
         tl.fromTo(next.container, 3, { opacity: 0 }, { opacity: 1 });
-       
+
 
       }
     }
