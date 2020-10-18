@@ -15,21 +15,45 @@ let controller;
 const burgerr = document.querySelector(".burger");
 const introPage = document.querySelector("#introPage");
 const aboutPage = document.querySelector("#aboutPage");
+const mouse = document.querySelector(".cursor");
+const mouseTxt = mouse.querySelector("span");
 const contactPage = document.querySelector("#contactPage");
-const navli1 = document.querySelector(".nav-li-1");
-const navli2 = document.querySelector(".nav-li-2");
-const navli3 = document.querySelector(".nav-li-3");
-const navli4 = document.querySelector(".nav-li-4");
 
 
 
-
+//events
 burgerr.addEventListener("click",navTogle);
+window.addEventListener("mousemove", cursor);
+window.addEventListener("mouseover", activeCursor);
 
 
 
 //Functions
 
+function cursor(e) {
+  mouse.style.top = e.pageY + "px";
+  mouse.style.left = e.pageX + "px";
+}
+
+function activeCursor(e) {
+  const item = e.target;
+  if (item.id === "logo" || item.classList.contains("burger")) {
+    mouse.classList.add("nav-active");
+  } else {
+    mouse.classList.remove("nav-active");
+  }
+  if (item.classList.contains("explore")) {
+    mouse.classList.add("explore-active");
+    gsap.to(".title-swipe", 1, { y: "0%" });
+    mouseTxt.innerText = "Tap";
+  } else {
+    mouse.classList.remove("explore-active");
+    mouseTxt.innerText = "";
+    gsap.to(".title-swipe", 1, { y: "100%" });
+  }
+
+  
+}
 function removeNav() {
   const navtogleScene = gsap.timeline();
   burgerr.classList.remove("active-nav");
@@ -260,8 +284,8 @@ function contactFPage() {
   controller = new ScrollMagic.Controller();
 
   const contactPageGsap = gsap.timeline();
-  contactPageGsap.fromTo(contact, 5, { opacity: "0" }, { opacity: "0.9" });
-  contactPageGsap.fromTo(contact, 6, { scale: "0" }, { scale: "1" }, "-=7");
+  contactPageGsap.fromTo(contact, 6, { opacity: "0" }, { opacity: "0.9" });
+  contactPageGsap.fromTo(contact, 6, { scale: "0" }, { scale: "1" }, "-=3.5");
   contactPageGsap.fromTo(githubContact, 2.5, { x: "-400%", y: "-400%" }, { x: "0%", y: "0%" }, "-=2.5");
   contactPageGsap.fromTo(gmailContact, 2.5, { x: "-400%", y: "400%" }, { x: "0%", y: "0%" }, "-=2.5");
   contactPageGsap.fromTo(LinkinContact, 2.5, { x: "400%", y: "-400%" }, { x: "0%", y: "0%" }, "-=2.5");
@@ -301,7 +325,7 @@ function projectFpage() {
     ".projects-section .des .fa-times-circle"
   );
   const proname = document.querySelectorAll(".des .proname h3");
-  const desc = document.querySelectorAll(".des .desc h5");
+  const desc = document.querySelectorAll(".des .desc79 h5");
   var currentslide = 0;
 
   slides.forEach((img, i) => {
