@@ -10,6 +10,7 @@ body{
   position: relative;
   overflow-x: hidden;
   background-color: rgb(10,10,22);
+  cursor: none;
 }
 
 main{
@@ -126,7 +127,7 @@ main{
     align-items: center;
     z-index: 1;
     opacity: 1;
-    clip-path: circle(50px at 100% -10%);
+    clip-path: circle(20px at 100% -10%);
     
   }
   
@@ -175,6 +176,8 @@ main{
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
       margin-top: 60px;
+      list-style: none;
+      text-shadow: 5px 5px rgb(10, 10, 50);
  
       
       
@@ -324,7 +327,7 @@ main{
     border: none;
     margin-top: 5px;
     border-radius:15px;
-    cursor: pointer;
+    cursor: none;
   }
   .insidebutt{
     display: flex;
@@ -335,13 +338,14 @@ main{
   .r:hover{
     text-shadow: 6px 6px 6px black;
     transition: all 0.4s ease 0s;
+    cursor: none;
   }
   .butts{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 85%;
- 
+   cursor: none;
  }  
  .mid{
    width:5px;
@@ -636,6 +640,7 @@ main{
   background-size: cover;
   position: relative;
   overflow: hidden;
+  cursor: none;
   
 }
 .containerr .todo {
@@ -704,6 +709,7 @@ main{
   align-items: center;
   flex-direction: column;
   overflow-y: hidden;
+  cursor: none;
 }
 
 .slidee {
@@ -866,6 +872,7 @@ h3 {
   margin-top: 1.5%;
   text-align: center;
   z-index: 600;
+  cursor: none;
 }
 .btn:hover {
   color: #f3f5f7;
@@ -887,21 +894,330 @@ h3 {
 }
 
 
-@media (max-width: 768px) {
+.cursor {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 2px solid  none;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: all 0.5s ease-in-out;
+  transition-property: background, transform;
+  transform-origin: 75% 75%;
+  background-color: blanchedalmond;
+  cursor: none;
+  
+  
+}
+.cursor.nav-active {
+  background: rgb(86, 124, 228);
+  transform: scale(3);
+  cursor: none;
+}
+.cursor.explore-active {
+  background: white;
+  transform: scale(3);
+  cursor: none;
+}
+.cursor-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 0.5rem;
+  transform: translate(-50%, -50%);
+  cursor: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*....................................Media query...................................*/
+
+
+
+
+
+@media(max-width:1024px){
+  .butts{
+    width: 310px;
+  }
+  .introText2{
+    top: 55%;
+  }
+  
+  .contact{
+    width:60%;
+    max-height:75%; 
+    position: absolute;
+    top: 50%;
+    left: 53%;
+    transform: translate(-50%,-50%);
+     display: flex;
+     position: relative;
+     border-radius: 800px;
+     overflow: hidden !important;
+     
+  }
+
+  
+  .miniCircles{
+    width:12.5% ;
+    height:14%;
+    border-radius: 50%;
+   position: relative;
+   overflow: hidden;
+   
+  
+ }
+
+ 
+
+.githubContact{
+position: absolute;
+top:31%;
+left: 21%; 
+}
+
+.LinkinContact{
+position: absolute;
+top:22%;
+left: 54%; 
+}
+
+.gmailContact{
+position: absolute;
+top:59%;
+left: 22%;
+}
+
+.twitterContact{
+position: absolute;
+top:67%;
+left: 58%;
+
+}
+
+
+.facebookContact{
+position: absolute;
+top:45%;
+left: 77%; 
+}
+.logoText{
+  font-size: 20vw;
+}
+ 
+.containerr .slide .text {
+  top: 22%;
+  position: absolute;
+  text-align: center;
+  left: 0%;
+  width: 100%;
+}
+.text1 {
+  font-size: calc(30px + 1vw);
+  font-weight: 700;
+  letter-spacing: 5px;
+  position: relative;
+  color: #b34854;
+  animation: text 2s 1;
+}
+.text span {
+  text-transform: uppercase;
+  display: block;
+}
+.text2 {
+  font-size: calc(11px + 1vw);
+  color: #EC8B5E;
+}
+
+
+.containerr {
+  width: 100vw;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 0%;
+}
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.wrapperr {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  
+  overflow-y: hidden;
+  
+}
+.slidee {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  cursor: pointer;
+  filter: brightness(80%);
+}
+.slidee:hover {
+  border-style: groove;
+  border-width: 0.3rem;
+  border-color: #b34854;
+  opacity: 0.8;
+}
+#Next,
+#Prev {
+  font-size: calc(50px + 1vw);
+
+  color: #b34854;
+
+  cursor: pointer;
+  transition: 400ms;
+}
+#Next:hover,
+#Prev:hover {
+  color: #f99b92;
+}
+body .projects-section .des {
+  position: absolute;
+  z-index: 101;
+  border: 1px solid #f9f5f3; /* Gray border */
+  border-radius: 4px;
+  /* Rounded border */
+  border-width: 5px;
+  padding: 5px;
+  background-color: #aaa4a1;
+  bottom: 100%;
+  width: 60%;
+  height: 34%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  display: none;
+  border-radius: 1%;
+}
+.des .proname h3 {
+  text-align: center;
+  margin-top: 0%;
+  font-size: calc(30px + 1vw);
+  font-family: "Sansita Swashed", cursive;
+  letter-spacing: 5px;
+  color: #222222;
+}
+.fa-times-circle {
+  font-size: 30px;
+  color: #f9f5f3;
+  margin-left: 92%;
+  cursor: pointer;
+  margin-top: 0.4%;
+}
+.des .fa-times-circle:hover {
+  scale: 1.5;
+  transition: 0.5s;
+  color: #b34854;
+}
+.desc h5 {
+  text-align: center;
+  margin-top: 4%;
+  font-size: calc(10px + 1vw);
+  font-family: "Sansita Swashed", cursive;
+  letter-spacing: 5px;
+  color: #222222;
+}
+.Rec {
+  color: #f9f5f3;
+}
+.projects-section .des button {
+  /*position: absolute;*/
+  margin-left: 35%;
+  margin-top: 2%;
+  text-align: center;
+}
+.btn {
+  border: 1px solid #f9f5f3;
+  background: none;
+  padding: 10px 30px;
+
+  font-size: calc(15px + 1vw);
+  color: #222222;
+  cursor: pointer;
+  font-family: "Kaushan Script", cursive;
+  margin-top: 10% !important;
+
+  /* transition: 0.8s;*/
+}
+.des .btn:hover {
+  color: #f3f5f7;
+}
+.des .btn::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0%;
+  background-color: #b34854;;
+  z-index: -1;
+  transition: 1s;
+  bottom: 0;
+  left: 0%;
+  /* border-radius: 50% 50% 0 0;*/
+}
+.des .btn:hover::before {
+  height: 100%;
+}
+
+
+}
+
+
+@media(max-width:770px){
+  .butts{
+    width: 252px;
+  }
+  .introText2{
+    top: 55%;
+  }
+
+  .logoText{
+    font-size: 20vw;
+  }
+ 
   .containerr .slide .text {
-    top: 15%;
+    top: 20%;
     position: absolute;
     text-align: center;
     left: 0%;
     width: 100%;
   }
   .text1 {
-    font-size: calc(28px + 1vw);
+    font-size: calc(25px + 1vw);
     font-weight: 700;
     letter-spacing: 5px;
     position: relative;
     color: #b34854;
-    background-color: #f9f5f3;
     animation: text 2s 1;
   }
   .text span {
@@ -910,18 +1226,10 @@ h3 {
   }
   .text2 {
     font-size: calc(10px + 1vw);
-    color: #222222;
+    color: #EC8B5E;
   }
 
-  .wrapperr {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f5f3;
-    overflow: hidden;
-  }
+
   .containerr {
     width: 100vw;
     height: 40vh;
@@ -938,6 +1246,18 @@ h3 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
+  .wrapperr {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+  
+    
+    overflow-y: hidden;
+    margin-top: 11%;
   }
   .slidee {
     width: 100%;
@@ -1042,7 +1362,7 @@ h3 {
     position: absolute;
     width: 100%;
     height: 0%;
-    background-color: #f99b92;
+    background-color: #b34854;;
     z-index: -1;
     transition: 1s;
     bottom: 0;
@@ -1052,120 +1372,220 @@ h3 {
   .des .btn:hover::before {
     height: 100%;
   }
+
+  
+
 }
-@media (min-width:100px) and (max-width: 700px) {
-  .containerr .slide .text {
-    top: 15%;
-    position: absolute;
-    text-align: center;
-    left: 6%;
-    width: 90%;
-  }
-  .text .text1 {
-    font-size: calc(25px + 1vw);
-    font-weight: 700;
-    letter-spacing: 5px;
-    position: relative;
-    color: #b34854;
-    background-color: #f9f5f3;
-    animation: text 2s 1;
-  }
-  .text span {
-    text-transform: uppercase;
-    display: block;
-  }
-  .text2 {
-    font-size: calc(15px + 1vw);
-    color: #222222;
-  }
 
-  .wrapperr .containerr {
-    height: 32%;
-  }
 
- body .projects-section .des {
-    position: absolute;
-    z-index: 101;
+@media(max-width:500px){
 
-    border: 1px solid #f9f5f3; /* Gray border */
-    border-radius: 4px;
+  .introText2{
+     top: 53%;
+   }
+   .aboutContent{
+     width: 82%;
+     
+   }
+   .aboutText{
+     top: 5.5%;
+     left: 12%;
+   }
+   .butts{
+     width: 100%;
+   }
+   
+ .resumeButt{
+   margin-bottom: 20px;
+ 
+ }
+ .r{
+   width: 95%;
+ }
 
-    border-width: 5px;
-    padding: 5px;
-    background-color: #aaa4a1;
-    min-width: 65%;
-    min-height: 55%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    display: none;
-    border-radius: 1%;
-  }
-  .des .proname h3 {
-    text-align: center;
-    margin-top: 0%;
-    font-size: calc(10px + 1vw);
-    font-family: "Sansita Swashed", cursive;
-    letter-spacing: 5px;
-    color: #222222;
-  }
-
-  .projects-section .des .fa-times-circle {
-    font-size: 20px;
-    color: #f9f5f3;
-    margin-left: 95%;
-    cursor: pointer;
-    margin-top: 0.1%;
-    width: 5%;
-  }
-  .fa-times-circle:hover {
-    scale: 1.5;
-    transition: 0.5s;
-    color: #b34854;
-  }
-  .des .desc h5 {
-    text-align: center;
-    margin-top: 5%;
-    font-size: calc(8px + 1vw);
-    font-family: "Sansita Swashed", cursive;
-    letter-spacing: 5px;
-    color: #222222;
-  }
-  .Rec {
-    color: #f9f5f3;
-  }
-
-  .des .desc .btn {
-    border: 0.5px solid #f9f5f3;
-    background: none;
-    padding: 5px 10px;
-
-    font-size: calc(10px + 1vw);
-    color: #222222;
-    cursor: pointer;
-    font-family: "Kaushan Script", cursive;
-    margin-left: 30%;
-    margin-top: 7%;
-    text-align: center;
-    /* transition: 0.8s;*/
-  }
-  .btn:hover {
-    color: #f3f5f7;
-  }
-  .btn::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 0%;
-    background-color: #b34854;
-    z-index: -1;
-    transition: 1s;
-    bottom: 0;
-    left: 0%;
-    /* border-radius: 50% 50% 0 0;*/
-  }
-  .btn:hover::before {
-    height: 100%;
-  }
+ .contact{
+  width:60%;
+  max-height:75%; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+   margin-top: 3%;
+   display: flex;
+   position: relative;
+   border-radius: 800px;
+   overflow: hidden !important;
+   
 }
+
+
+
+
+.miniCircles{
+  width:12.5% ;
+  height:14%;
+  border-radius: 50%;
+ position: relative;
+ overflow: hidden;
+
+
+}
+
+
+
+.githubContact{
+position: absolute;
+top:32%;
+left: 21.5%; 
+}
+
+.LinkinContact{
+position: absolute;
+top:29%;
+left: 54%; 
+}
+
+.gmailContact{
+position: absolute;
+top:57%;
+left: 22%;
+}
+
+.twitterContact{
+position: absolute;
+top:60%;
+left: 56%;
+
+}
+
+
+.facebookContact{
+position: absolute;
+top:43%;
+left: 74%; 
+}
+ 
+ .logoText{
+   font-size: 20vw;
+ }
+
+ 
+ 
+ .containerr .slide .text {
+  top: 22%;
+  position: absolute;
+  text-align: center;
+  left: 5%;
+  width: 90%;
+}
+.text .text1 {
+  font-size: calc(18px + 1vw);
+  font-weight: 700;
+  letter-spacing: 5px;
+  position: relative;
+  color: #b34854;
+  animation: text 2s 1;
+}
+.text span {
+  text-transform: uppercase;
+  display: block;
+}
+.text2 {
+  font-size: calc(10px + 1vw);
+  color: #EC8B5E;
+}
+
+.wrapperr .containerr {
+  height: 32%;
+}
+
+body .projects-section .des {
+  position: absolute;
+  z-index: 101;
+
+  border: 1px solid #f9f5f3; /* Gray border */
+  border-radius: 4px;
+
+  border-width: 5px;
+  padding: 10px;
+  background-color: #aaa4a1;
+  min-width: 65%;
+  min-height: 55%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  display: none;
+  border-radius: 1%;
+}
+.des .proname h3 {
+  text-align: center;
+  margin-top: 0%;
+  font-size: calc(10px + 1vw);
+  font-family: "Sansita Swashed", cursive;
+  letter-spacing: 5px;
+  color: #222222;
+}
+
+.projects-section .des .fa-times-circle {
+  font-size: 20px;
+  color: #f9f5f3;
+  margin-left: 95%;
+  cursor: pointer;
+  margin-top: 0.1%;
+  width: 5%;
+}
+.fa-times-circle:hover {
+  scale: 1.5;
+  transition: 0.5s;
+  color: #b34854;
+}
+.des .desc h5 {
+  text-align: center;
+  margin-top: 5%;
+  font-size: calc(8px + 1vw);
+  font-family: "Sansita Swashed", cursive;
+  letter-spacing: 5px;
+  color: #222222;
+}
+.Rec {
+  color: #f9f5f3;
+}
+
+.des .desc .btn {
+  border: 0.5px solid #f9f5f3;
+  background: none;
+  padding: 5px 10px;
+
+  font-size: calc(10px + 1vw);
+  color: #222222;
+  cursor: pointer;
+  font-family: "Kaushan Script", cursive;
+  margin-left: 30%;
+  margin-top: 7%;
+  text-align: center;
+  /* transition: 0.8s;*/
+}
+  
+.wrapperr {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  
+  overflow-y: hidden;
+  margin-top: 20%;
+}
+
+ }
+
+
+  @media (width:540px)
+ {
+    .butts{
+      width: 200px;
+    }
+ }
