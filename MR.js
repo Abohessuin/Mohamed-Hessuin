@@ -22,7 +22,7 @@ const contactPage = document.querySelector("#contactPage");
 
 
 //events
-burgerr.addEventListener("click",navTogle);
+burgerr.addEventListener("click", navTogle);
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
 
@@ -37,12 +37,12 @@ function cursor(e) {
 
 function activeCursor(e) {
   const item = e.target;
-  if (item.id === "logo" || item.classList.contains("burger")) {
+  if ((item.id === "logo" || item.classList.contains("burger")) && window.innerWidth > 1024) {
     mouse.classList.add("nav-active");
   } else {
     mouse.classList.remove("nav-active");
   }
-  if (item.classList.contains("explore")) {
+  if (item.classList.contains("explore") && window.innerWidth > 1024) {
     mouse.classList.add("explore-active");
     gsap.to(".title-swipe", 1, { y: "0%" });
     mouseTxt.innerText = "Tap";
@@ -52,7 +52,7 @@ function activeCursor(e) {
     gsap.to(".title-swipe", 1, { y: "100%" });
   }
 
-  
+
 }
 function removeNav() {
   const navtogleScene = gsap.timeline();
@@ -90,7 +90,7 @@ function navTogle(e) {
     navtogleScene.to(".nav-bar", 1.2, { clipPath: "circle(2500px at 100% -10%)" });
     navtogleScene.to(".nav-overlayeranimation", 2, { x: "100%" })
   } else {
-    console.log("hey"); 
+    console.log("hey");
     e.target.classList.remove("active-nav");
     navtogleScene.to(".line1", 0.5, { rotate: "0", y: 0 });
     navtogleScene.to(".line2", 0.5, { rotate: "0", y: 0 }, "-=0.5");
@@ -119,48 +119,52 @@ function introFPage() {
   introTextAnim.fromTo(hessuinAnimation, 2.5, { x: "-200%", y: "-200%" }, { x: "0%", y: "0%" }, "-=2.5");
   introTextAnim.fromTo(introText2, 2, { opacity: "0" }, { opacity: "1" });
   introTextAnim.fromTo(introText2, 1.5, { color: "white" }, { color: "blueviolet" });
+  if (window.innerWidth > 1024) {
+    introVideoScene = new ScrollMagic.Scene({
+      duration: "9250",
+      triggerElement: introPage,
+      triggerHook: 0
+    })
+      .setPin(introPage)
+      .setTween()
+      .addTo(controller);
 
-  introVideoScene = new ScrollMagic.Scene({
-    duration: "9250",
-    triggerElement: introPage,
-    triggerHook: 0
-  })
-    .setPin(introPage)
-    .setTween()
-    .addTo(controller);
+    introTextScene = new ScrollMagic.Scene({
+      triggerElement: introPage,
+      triggerHook: 0.8,
+      offset: 8200
 
-  introTextScene = new ScrollMagic.Scene({
-    triggerElement: introPage,
-    triggerHook: 0.8,
-    offset: 8200
+    })
 
-  })
-
-    /*.addIndicators({
-      colorStart: "white",
-      colorTrigger: "white",
-      name: "page",
-      indent: 200
-    })*/
-    .setTween(introTextAnim)
-    .addTo(controller)
-
-
-  let accelamount = 0.1;
-  let scrollpos = 0;
-  let delay = 0;
-
-  introVideoScene.on("update", e => {
-    scrollpos = e.scrollPos / 1000;
-  });
-
-  setInterval(() => {
-    delay += (scrollpos - delay) * accelamount;
-    introVidoe.currentTime = delay;
+      /*.addIndicators({
+        colorStart: "white",
+        colorTrigger: "white",
+        name: "page",
+        indent: 200
+      })*/
+      .setTween(introTextAnim)
+      .addTo(controller)
 
 
+    let accelamount = 0.1;
+    let scrollpos = 0;
+    let delay = 0;
 
-  }, 40);
+    introVideoScene.on("update", e => {
+      scrollpos = e.scrollPos / 1000;
+    });
+
+    setInterval(() => {
+      delay += (scrollpos - delay) * accelamount;
+      introVidoe.currentTime = delay;
+
+
+
+    }, 40);
+
+
+  }
+
 
 
 }
@@ -462,7 +466,7 @@ function slidesAnimation() {
     pageTl.fromTo(logo, 2, { y: "-300%" }, { y: "0%" }, "-=2");
 
     //Create new scene
-    if (slide.id === "introPage") {
+    if (slide.id === "introPage"&&window.innerWidth>1024) {
       pageScene = new ScrollMagic.Scene({
         triggerElement: slide,
         duration: "100%",
@@ -547,7 +551,8 @@ barba.init({
   views: [
     {
       namespace: 'firstPage',
-      afterEnter() {
+      beforeEnter() {
+        removeNav();
         introFPage();
         aboutFPage();
         slidesAnimation();
@@ -566,10 +571,11 @@ barba.init({
     {
       namespace: 'secondPage',
       beforeEnter() {
+        removeNav();
         bringNavIntoPage();
         projectFpage();
         contactFPage();
-       slidesAnimation2();
+        slidesAnimation2();
         logo.href = "../MR.html";
       },
       beforeLeave() {
@@ -612,4 +618,8 @@ barba.init({
       }
     }
   ]
+});
+
+$(window).on("load", function () {
+  $(".loader-wrapper").fadeOut("slow");
 });
