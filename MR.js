@@ -132,7 +132,7 @@ function introFPage() {
     introTextScene = new ScrollMagic.Scene({
       triggerElement: introPage,
       triggerHook: 0.8,
-      offset: 8200
+      offset: 8500
 
     })
 
