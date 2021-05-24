@@ -2,7 +2,7 @@
 
 it breifly show my skills and informations about myself 
 
-#Projec Aim
+# Projec Aim
 
 1-training on how to design site from scratch without external desingersI
 
